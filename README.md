@@ -1,7 +1,7 @@
 # Swarm Backup and Restore System
 This system allow you to get scheduled backups from you swarm cluster and restore it.
 
-This image uses [whaleprint](https://github.com/mantika/whaleprint) to export data fom cluster and restore it.
+This project uses [whaleprint](https://github.com/mantika/whaleprint) to export data fom cluster and restore it.
 
 ## Requirements
 * Docker >=1.13
