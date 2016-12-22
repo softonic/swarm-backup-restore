@@ -1,7 +1,12 @@
 # Swarm Backup and Restore System
 This system allow you to get scheduled backups from you swarm cluster and restore it.
 
-This project uses [whaleprint](https://github.com/mantika/whaleprint) to export data fom cluster and restore it.
+This project uses [whaleprint](https://github.com/mantika/whaleprint) to export data fom cluster and restore it so it has the same limitations.
+
+## How it Works
+The container should be scheduled to be executed like a cron with the  `--restart-delay` and `--restart-max-attempts` options.
+
+Every time the container is executed it will export all the cluster services in [DAB files](https://github.com/docker/docker/blob/master/experimental/docker-stacks-and-bundles.md) and these will be upload to the configured S3. That file is a snapshot of current services running in our cluster and their configurations, so we can restore that services in any moment.
 
 ## Requirements
 * Docker >=1.13
