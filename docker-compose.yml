@@ -9,8 +9,8 @@ services:
     volumes:
       - ./app:/app
     environment:
-      - BUCKET=FILL IT
-      - REGION=FILL IT
-      - AWS_KEY_ID_SECRET=FILL IT
-      - AWS_ACCESS_KEY_SECRET=FILL IT
-      - IGNORE_STACKS=FILL IT
+      - BUCKET=TO_BE_FILLED
+      - REGION=TO_BE_FILLED
+      - AWS_KEY_ID_SECRET=TO_BE_FILLED
+      - AWS_ACCESS_KEY_SECRET=TO_BE_FILLED
+      - IGNORE_STACKS=TO_BE_FILLED
