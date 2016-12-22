@@ -1,4 +1,6 @@
 # Swarm Backup and Restore System
+[![](https://images.microbadger.com/badges/image/softonic/swarm-backup-restore.svg)](https://microbadger.com/images/softonic/swarm-backup-restore "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/softonic/swarm-backup-restore.svg)](https://microbadger.com/images/softonic/swarm-backup-restore "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/commit/softonic/swarm-backup-restore.svg)](https://microbadger.com/images/softonic/swarm-backup-restore "Get your own commit badge on microbadger.com")
+
 This system allow you to get scheduled backups from you swarm cluster and restore it.
 
 This project uses [whaleprint](https://github.com/mantika/whaleprint) to export data fom cluster and restore it so it has the same limitations.
@@ -10,6 +12,10 @@ Every time the container is executed it will export all the cluster services in 
 
 ## Requirements
 * Docker >=1.13
+
+## Limitations
+* It doesn't wotk with services that uses mount volumes.
+* It doesn't backup the secrets.
 
 ## How to run the service
 
