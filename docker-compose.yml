@@ -1,0 +1,16 @@
+version: "2"
+
+services:
+  backup:
+    build:
+      context: .
+    image: softonic/swarm-backup-restore
+    command: sleep 100000
+    volumes:
+      - ./app:/app
+    environment:
+      - BUCKET=FILL IT
+      - REGION=FILL IT
+      - AWS_KEY_ID_SECRET=FILL IT
+      - AWS_ACCESS_KEY_SECRET=FILL IT
+      - IGNORE_STACKS=FILL IT
