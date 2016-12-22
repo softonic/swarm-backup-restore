@@ -11,6 +11,10 @@ Every time the container is executed it will export all the cluster services in 
 ## Requirements
 * Docker >=1.13
 
+## Limitations
+* It doesn't wotk with services that uses mount volumes.
+* It doesn't backup the secrets.
+
 ## How to run the service
 
 The service needs to be deployed in a node with access to the docker socket (unix or tcp).
