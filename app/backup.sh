@@ -45,13 +45,13 @@ then
 fi
 
 TARNAME=$(date +"%s").tar.gz
-OBJECT_NAME="/app/$TARNAME"
+OBJECT_NAME="$TARNAME"
 if [ ! -z $NAMESPACE ]
 then
-	OBJECT_NAME="/app/$NAMESPACE/$TARNAME"
+	OBJECT_NAME="$NAMESPACE/$TARNAME"
 fi
 
 tar cvzf $TARNAME *.dab
 rm *.dab
 
-upload "$TARNAME" "/app/$TARNAME" "$REGION" "$BUCKET" "$AWS_KEY_ID" "$AWS_ACCESS_KEY"
+upload "$OBJECT_NAME" "/app/$TARNAME" "$REGION" "$BUCKET" "$AWS_KEY_ID" "$AWS_ACCESS_KEY"
