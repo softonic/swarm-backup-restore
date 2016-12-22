@@ -87,3 +87,8 @@ docker-compose up -d
 docker-compose exec backup bash
 ```
 From here you can execute the shell script `backup.sh`.
+
+
+# TODO
+* Review errors in restore related with networks.
+* Improve restore to pass the object as argument instead of the signed url.
