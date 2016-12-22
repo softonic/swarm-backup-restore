@@ -13,13 +13,14 @@ Every time the container is executed it will export all the cluster services in 
 
 ## How to run the service
 
+### Backup
 The service needs to be deployed in a node with access to the docker socket (unix or tcp).
 
 Example:
 ```
 docker \
     service create --name docker-swarm-backup \
-      --limit-memory 20m \
+      --limit-memory 70m \
       --limit-cpu 0.5 \
       --container-label com.docker.stack.namespace=swarm-management \
       --label com.docker.stack.namespace=swarm-management \
@@ -28,12 +29,38 @@ docker \
       --restart-max-attempts 87600 \
       -e BUCKET=my_bucket \
       -e REGION=s3-eu-west-1 \
+      -e NAMESPACE=backup \
       -e AWS_ACCESS_KEY_SECRET=aws-access-key \
       -e AWS_KEY_ID_SECRET=aws-key-id \
       -e IGNORE_STACKS=stack1,stack2,stack3 \
       --secret aws-access-key \
       --secret aws-key-id \
       softonic/swarm-backup-restore
+```
+
+### Restore
+This should be executed when you want to restore the cluster. Due to the use of secret, we need to create service, but this service should be removed after it did its work to avoid an infinite cluster restore (every hourin the example).
+
+```
+docker \
+    service create --name docker-swarm-restore \
+      --limit-memory 70m \
+      --limit-cpu 0.5 \
+      --container-label com.docker.stack.namespace=swarm-management \
+      --label com.docker.stack.namespace=swarm-management \
+      --mount type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
+      --restart-delay 3600s \
+      --restart-max-attempts 87600 \
+      -e BUCKET=my_bucket \
+      -e REGION=s3-eu-west-1 \
+      -e NAMESPACE=backup \
+      -e AWS_ACCESS_KEY_SECRET=aws-access-key \
+      -e AWS_KEY_ID_SECRET=aws-key-id \
+      -e IGNORE_STACKS=stack1,stack2,stack3 \
+      --secret aws-access-key \
+      --secret aws-key-id \
+      softonic/swarm-backup-restore /app/restore.sh "URL_WITH_BACKUP"
+docker service rm docker-swarm-restore
 ```
 
 ## How to build the image

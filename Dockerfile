@@ -21,6 +21,7 @@ LABEL org.label-schema.vendor="Softonic" \
 REGION=Bucket region,\
 AWS_KEY_ID_SECRET=Secret name where the AWS_KEY_ID is stored,\
 AWS_ACCESS_KEY_SECRET=Secret name where the AWS_ACCESS_KEY is stored,\
+NAMESPACE=Namespace tu be used in S3 to store the objects, \
 IGNORE_STACKS=Stacks to not be backup separated by commas" \
     org.label-schema.build-date=$build_date
 

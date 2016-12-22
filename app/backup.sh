@@ -45,6 +45,12 @@ then
 fi
 
 TARNAME=$(date +"%s").tar.gz
+OBJECT_NAME="/app/$TARNAME"
+if [ ! -z $NAMESPACE ]
+then
+	OBJECT_NAME="/app/$NAMESPACE/$TARNAME"
+fi
+
 tar cvzf $TARNAME *.dab
 rm *.dab
 
