@@ -15,6 +15,7 @@ Every time the container is executed it will export all the cluster services in 
 
 ## Limitations
 * It doesn't work with services that use mount volumes.
+* It doesn't work properly with services that doesn't use stack because when they are recreated they have "services" prefixed to the service name so it can provoke errors.
 * It doesn't backup the secrets.
 
 ## How to run the service
