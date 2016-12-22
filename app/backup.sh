@@ -14,8 +14,8 @@ function upload {
 	file=$2
 	region=$3
 	bucket=$4
-	s3key=$5
-	s3Secret=y=$6
+	s3Key=$5
+	s3Secret=$6
 
 	resource="/${bucket}/${objectName}"
 	contentType="text/plain"
@@ -24,12 +24,14 @@ function upload {
 	signature=`echo -en ${stringToSign} | openssl sha1 -hmac ${s3Secret} -binary | base64`
 
 	curl -v -i -X PUT -T "${file}" \
-			  -H "Host: ${bucket}.s3.amazonaws.com" \
-			  -H "Date: ${dateValue}" \
-			  -H "Content-Type: ${contentType}" \
-			  -H "Authorization: AWS ${s3Key}:${signature}" \
-			  https://${bucket}.$region.amazonaws.com/${objectName}
+		  -H "Host: ${bucket}.$region.amazonaws.com" \
+		  -H "Date: ${dateValue}" \
+		  -H "Content-Type: ${contentType}" \
+		  -H "Authorization: AWS ${s3Key}:${signature}" \
+		  https://${bucket}.$region.amazonaws.com/${objectName}
 }
+
+/app/whaleprint export
 
 if [ ! -z $IGNORE_STACKS ]
 then
@@ -37,15 +39,13 @@ then
 	IFS=","
 	for stack in $IGNORE_STACKS
 	do
-		rm "${stack}.dab"
+			rm "${stack}.dab"
 	done
-	IFS=OFS
+	IFS=$OFS
 fi
-
-/app/whaleprint export
 
 TARNAME=$(date +"%s").tar.gz
 tar cvzf $TARNAME *.dab
 rm *.dab
 
-upload $TARNAME "/app/$TARNAME" $REGION $BUCKET $AWS_KEY_ID $AWS_ACCESS_KEY
+upload "$TARNAME" "/app/$TARNAME" "$REGION" "$BUCKET" "$AWS_KEY_ID" "$AWS_ACCESS_KEY"

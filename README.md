@@ -21,11 +21,11 @@ docker \
       --mount type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
       --restart-delay 3600s \
       --restart-max-attempts 87600 \
-      -e BUCKET=my_bucket
-      -e REGION=s3-eu-west-1
-      -e AWS_ACCESS_KEY_SECRET=aws-access-key
-      -e AWS_KEY_ID_SECRET=aws-key-id
-      -e IGNORE_STACKS=stack1,stack2,stack3
+      -e BUCKET=my_bucket \
+      -e REGION=s3-eu-west-1 \
+      -e AWS_ACCESS_KEY_SECRET=aws-access-key \
+      -e AWS_KEY_ID_SECRET=aws-key-id \
+      -e IGNORE_STACKS=stack1,stack2,stack3 \
       --secret aws-access-key \
       --secret aws-key-id \
       softonic/swarm-backup-restore
