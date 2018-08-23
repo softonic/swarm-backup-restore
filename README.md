@@ -1,3 +1,6 @@
+# DEPRECATED
+This is not maintained anymore, as it's based in DAB files, which is something deprecated for Swarm clusters.
+
 # Swarm Backup and Restore System
 [![](https://images.microbadger.com/badges/image/softonic/swarm-backup-restore.svg)](https://microbadger.com/images/softonic/swarm-backup-restore "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/softonic/swarm-backup-restore.svg)](https://microbadger.com/images/softonic/swarm-backup-restore "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/commit/softonic/swarm-backup-restore.svg)](https://microbadger.com/images/softonic/swarm-backup-restore "Get your own commit badge on microbadger.com")
 
